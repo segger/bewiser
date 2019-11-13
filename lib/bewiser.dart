@@ -46,4 +46,17 @@ class _BewiserAppState extends State<BewiserApp> {
         return MoodPage();
     }
   }
+
+  Widget _materialBody() {
+    // stack?
+    switch(currentTab) {
+      case NavTab.statistics: return MaterialApp(home: StatisticsPage(),);
+      case NavTab.date: return MaterialApp(home: DatePage());
+      case NavTab.practice: return MaterialApp(home: PracticePage());
+      case NavTab.settings: return MaterialApp(home: SettingsPage());
+      case NavTab.mood:
+      default:
+        return MaterialApp(home: MoodPage());
+    }
+  }
 }

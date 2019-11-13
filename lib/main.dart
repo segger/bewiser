@@ -13,6 +13,7 @@ class App extends StatelessWidget {
         primarySwatch: Colors.amber,
       ),
       home: BewiserApp(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

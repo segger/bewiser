@@ -1,16 +1,15 @@
 # bewiser
 
-A new Flutter project.
+This is a prototype of bewiser. Work in progress.
 
-## Getting Started
+## Resources
 
-This project is a starting point for a Flutter application.
+### App
+* Navigation
+  - https://medium.com/@swav.kulinski/flutter-navigating-off-the-charts-e118562a36a5
+  - https://medium.com/coding-with-flutter/flutter-case-study-multiple-navigators-with-bottomnavigationbar-90eb6caa6dbf
 
-A few resources to get you started if this is your first Flutter project:
+### Mood
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+* Sliders
+  - https://itnext.io/custom-sliders-in-flutter-7b53087f4b13
