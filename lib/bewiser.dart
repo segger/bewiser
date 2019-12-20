@@ -15,7 +15,6 @@ class _BewiserAppState extends State<BewiserApp> {
   NavTab currentTab = NavTab.mood;
   
   _selectTab(NavTab tab) {
-    print(tab);
     setState(() {
       currentTab = tab;
     });

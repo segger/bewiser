@@ -9,7 +9,8 @@ class MoodPage extends StatefulWidget {
 }
 
 class _MoodPageState extends State<MoodPage> {
-  int _value = 3;
+  int _mood = 3;
+  int _interest = 3;
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +20,26 @@ class _MoodPageState extends State<MoodPage> {
         child: Column(
           children: <Widget>[
             Slider(
-              value: _value.toDouble(),
+              value: _mood.toDouble(),
               min: 0.0,
               max: 6.0,
               divisions: 6,
               label: 'Humör',
               onChanged: (double newValue) {
                 setState(() {
-                  _value = newValue.round();
+                  _mood = newValue.round();
+                });
+              },
+            ),
+            Slider(
+              value: _interest.toDouble(),
+              min: 0.0,
+              max: 6.0,
+              divisions: 6,
+              label: 'Intresse',
+              onChanged: (double newValue) {
+                setState(() {
+                  _interest = newValue.round();
                 });
               },
             )
