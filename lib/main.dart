@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'bewiser.dart';
+import 'package:bewiser/utils/constants.dart';
 
-void main() => runApp(App());
+void main() => runApp(Constants(child: App()));
 
 class App extends StatelessWidget {
   @override

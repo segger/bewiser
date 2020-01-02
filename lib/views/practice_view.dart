@@ -1,22 +1,37 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:bewiser/utils/dialogs.dart';
+
+import 'package:bewiser/models/practice.dart';
+import 'package:bewiser/widgets/practice/practices.dart';
 
 class PracticeView extends StatefulWidget {
-  PracticeView({Key key}) : super(key: key);
+  final Practice practice;
+  PracticeView(this.practice, {Key key}) : super(key: key);
 
   @override
   _PracticeViewState createState() => _PracticeViewState();
 }
 
 class _PracticeViewState extends State<PracticeView> {
-  String _notes = '';
+
+  Widget _practice(int id) {
+    switch(id) {
+      case 1:
+        return Practice01();
+      case 2:
+        return Practice02();
+      case 3:
+        return Practice03();
+    }
+    return PracticeNotFound();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Practice!'),
+        title: Text(widget.practice.title),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -33,42 +48,7 @@ class _PracticeViewState extends State<PracticeView> {
               //borderRadius: BorderRadius.all(Radius.circular(15)),
             ),
             padding: EdgeInsets.all(15),
-            child: Center(
-                child: Column(
-                  children: <Widget>[
-                    Text(
-                    'PracticePage\nStep1.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n'+
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n'+
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n',
-                    ),
-                    SizedBox(
-                      width: double.infinity,
-                      child: FlatButton(
-                        child: Text(_notes),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          side: BorderSide(color: Colors.amber),
-                        ),
-                        padding: EdgeInsets.all(15),
-                        onPressed: () async {
-                          String notes = await displayNotesDialog(context, _notes);
-                          if (notes != null) {
-                            setState(() {
-                              _notes = notes;
-                            });
-                          }
-                        },
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 10),
-                    ),
-                    Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n'+
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n',
-                    ),
-                  ],
-                ),
-              ),
+            child: _practice(widget.practice.id),
           ),
         ),
       ),

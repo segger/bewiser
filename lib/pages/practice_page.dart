@@ -1,6 +1,8 @@
-import 'package:bewiser/views/practice_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+
+import 'package:bewiser/utils/constants.dart';
+import 'package:bewiser/views/practice_view.dart';
 
 class PracticePage extends StatefulWidget {
   PracticePage({Key key}) : super(key: key);
@@ -11,18 +13,14 @@ class PracticePage extends StatefulWidget {
 
 class _PracticePageState extends State<PracticePage> {
 
-  final List<String> _listViewData = [
-    "One",
-    "Two",
-    "Three"
-  ];
-
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: _listViewData.map((data) => ListTile(
-        title: Text(data),
-        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PracticeView())),
+      children: Constants.of(context).practices.map((practice) => ListTile(
+        title: Text(practice.title),
+        onTap: () => Navigator.push(context, MaterialPageRoute(
+          builder: (context) => PracticeView(practice),
+        )),
       )).toList(),
     );
   }
