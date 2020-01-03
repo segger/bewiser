@@ -7,9 +7,9 @@ class Constants extends InheritedWidget {
   const Constants({Key key, Widget child}) : super(key: key, child: child);
 
   final List<Practice> practices = const [
-    Practice(1, 50, 100, "Övning 1"),
-    Practice(2, 100, 300, "Övning 2"),
-    Practice(3, 300, 500, "Övning 3"),
+    Practice(1, 50, 100, "Hjärta och hjärna"),
+    Practice(2, 100, 300, "Mindfulness"),
+    Practice(3, 300, 500, "Ute på vägen"),
   ];
 
   @override

@@ -5,7 +5,7 @@ Future<String> displayNotesDialog(BuildContext context, String content) async {
     context: context,
     builder: (context) {
       return AlertDialog(
-        title: Text('Notes'),
+        title: Text('Anteckningar'),
         content: TextField(
           keyboardType: TextInputType.multiline,
           maxLines: null,
@@ -20,13 +20,13 @@ Future<String> displayNotesDialog(BuildContext context, String content) async {
         ),
         actions: <Widget>[
           FlatButton(
-            child: Text('Cancel'),
+            child: Text('Ångra'),
             onPressed: () {
               Navigator.of(context).pop();
             },
           ),
           FlatButton(
-            child: Text('Ok'),
+            child: Text('Spara'),
             onPressed: () {
               Navigator.of(context).pop(content);
             },

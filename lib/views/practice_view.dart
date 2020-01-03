@@ -47,7 +47,7 @@ class _PracticeViewState extends State<PracticeView> {
               ),
               //borderRadius: BorderRadius.all(Radius.circular(15)),
             ),
-            padding: EdgeInsets.all(15),
+            padding: EdgeInsets.all(25),
             child: _practice(widget.practice.id),
           ),
         ),
