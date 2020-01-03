@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:bewiser/utils/dialogs.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Practice01 extends StatefulWidget {
   Practice01({Key key}) : super(key: key);
@@ -10,8 +11,36 @@ class Practice01 extends StatefulWidget {
 }
 
 class _Practice01State extends State<Practice01> {
-
   String _notes = '';
+
+  _saveNotes() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('notes', _notes);
+  }
+
+  _getNotes() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String notes = prefs.getString('notes') ?? '';
+    setState(() {
+      _notes = notes;
+    });
+  }
+
+  _takeNotes() async {
+    String notes = await displayNotesDialog(context, _notes);
+    if (notes != null) {
+      setState(() {
+      _notes = notes;
+      });
+      _saveNotes();
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _getNotes();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,12 +62,7 @@ class _Practice01State extends State<Practice01> {
                 ),
                 padding: EdgeInsets.all(15),
                 onPressed: () async {
-                  String notes = await displayNotesDialog(context, _notes);
-                  if (notes != null) {
-                    setState(() {
-                      _notes = notes;
-                    });
-                  }
+                  await _takeNotes();
                 },
               ),
             ),

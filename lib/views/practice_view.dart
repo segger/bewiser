@@ -33,24 +33,31 @@ class _PracticeViewState extends State<PracticeView> {
       appBar: AppBar(
         title: Text(widget.practice.title),
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          color: Colors.amber,
-          child: Container(
-            margin: EdgeInsets.only(left: 15, right: 15, top: 15),
-            //margin: EdgeInsets.all(15),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(15),
-                topRight: Radius.circular(15)
+      body: LayoutBuilder(
+        builder: (context, constaints) {
+          return Container(
+            color: Colors.amber,
+            child: SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(minHeight: constaints.maxHeight),
+                child: Container(
+                  margin: EdgeInsets.only(left: 15, right: 15, top: 15),
+                  //margin: EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(15),
+                      topRight: Radius.circular(15)
+                    ),
+                    //borderRadius: BorderRadius.all(Radius.circular(15)),
+                  ),
+                  padding: EdgeInsets.all(25),
+                  child: _practice(widget.practice.id),
+                ),
               ),
-              //borderRadius: BorderRadius.all(Radius.circular(15)),
             ),
-            padding: EdgeInsets.all(25),
-            child: _practice(widget.practice.id),
-          ),
-        ),
+          );
+        },
       ),
     );
   }
