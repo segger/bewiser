@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:bewiser/navigation/navigation.dart';
 import 'package:bewiser/pages/pages.dart';
+import 'package:bewiser/navigation/bottom_menu.dart';
+import 'package:bewiser/navigation/drawer_menu.dart';
+
+enum NavTab { mood, statistics, date, practice, settings }
 
 class BewiserApp extends StatefulWidget {
   BewiserApp({Key key}) : super(key: key);
@@ -23,14 +26,54 @@ class _BewiserAppState extends State<BewiserApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Bewiser'),
-      ),
+      appBar: _appBar(),
       body: _body(),
-      bottomNavigationBar: BottomNavigation(
-        currentTab: currentTab,
-        onSelectTab: _selectTab,
-      ),
+      drawer: _drawerNavigation(),
+      //bottomNavigationBar: _bottomNavigation(),
+    );
+  }
+
+  AppBar _appBar() {
+    return AppBar(
+      title: Text(_appBarTitle()),
+      backgroundColor: _appBarColor(),
+    );
+  }
+
+  String _appBarTitle() {
+    switch(currentTab) {
+      case NavTab.statistics: return 'Statistik';
+      case NavTab.date: return 'Dejt';
+      case NavTab.practice: return 'Övning';
+      case NavTab.settings: return 'Inställningar';
+      case NavTab.mood:
+      default:
+        return 'Humör';
+    }
+  }
+
+  Color _appBarColor() {
+    switch(currentTab) {
+      case NavTab.statistics: return Colors.blueAccent;
+      case NavTab.date: return Colors.redAccent;
+      case NavTab.practice: return Colors.amber;
+      case NavTab.settings: return Colors.teal;
+      case NavTab.mood:
+      default:
+        return Colors.lightGreen;
+    }
+  }
+
+  DrawerMenu _drawerNavigation() {
+    return DrawerMenu(
+      onSelectTab: _selectTab,
+    );
+  }
+
+  BottomMenu _bottomNavigation() {
+    return BottomMenu(
+      currentTab: currentTab,
+      onSelectTab: _selectTab,
     );
   }
 
